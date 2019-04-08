@@ -14,6 +14,6 @@ echo -e "$(date '+%Y-%m-%d %H:%M:%S') backup work: -h$HOST -u$USER -P$PORT -p$PA
 for db in $DBS
 do
     echo $(date '+%Y-%m-%d %H:%M:%S') start backup $db...
-    mysqldump -h"$HOST" -u"$USER" -p"$PASS" --databases $db > /data/$(date +%Y-%m-%d)-$db.sql
+    mysqldump -h"$HOST" -u"$USER" -p"$PASS" --databases $db > /data/$db-$(date +%Y-%m-%d).sql
     echo $(date '+%Y-%m-%d %H:%M:%S') finish backup $db!
 done
