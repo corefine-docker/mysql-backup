@@ -11,6 +11,11 @@ if [ -z "$PORT" ] ;then
 fi
 
 if [ -z "$DBS" ] ;then
+    echo -e "$(date '+%Y-%m-%d %H:%M:%S') backup work: -h$HOST -u$USER -P$PORT -p$PASS --all-databases"
+    echo $(date '+%Y-%m-%d %H:%M:%S') start backup all dbs...
+    mysqldump -h"$HOST" -u"$USER" -p"$PASS" --all-databases > /data/$(date +%Y-%m-%d).sql
+    echo $(date '+%Y-%m-%d %H:%M:%S') finish backup all dbs!
+else
     echo -e "$(date '+%Y-%m-%d %H:%M:%S') backup work: -h$HOST -u$USER -P$PORT -p$PASS --databases $DBS"
     for db in $DBS
     do
@@ -18,9 +23,4 @@ if [ -z "$DBS" ] ;then
         mysqldump -h"$HOST" -u"$USER" -p"$PASS" --databases $db > /data/$db-$(date +%Y-%m-%d).sql
         echo $(date '+%Y-%m-%d %H:%M:%S') finish backup $db!
     done
-else
-    echo $(date '+%Y-%m-%d %H:%M:%S') start backup all dbs...
-    mysqldump -h"$HOST" -u"$USER" -p"$PASS" --all-databases > /data/$(date +%Y-%m-%d).sql
-    echo $(date '+%Y-%m-%d %H:%M:%S') finish backup all dbs!
-if
-
+fi
