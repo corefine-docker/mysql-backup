@@ -11,7 +11,7 @@ if [ -z "$PORT" ] ;then
 fi
 
 if [ -z "$DBS" ] ;then
-    echo -e "$(date '+%Y-%m-%d %H:%M:%S') backup work: -h$HOST -u$USER -P$PORT -p$PASS --databases $DBS
+    echo -e "$(date '+%Y-%m-%d %H:%M:%S') backup work: -h$HOST -u$USER -P$PORT -p$PASS --databases $DBS"
     for db in $DBS
     do
         echo $(date '+%Y-%m-%d %H:%M:%S') start backup $db...
