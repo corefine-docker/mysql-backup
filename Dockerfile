@@ -1,4 +1,5 @@
 FROM centos:7
+RUN \cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN yum install -y mysql
 RUN mkdir /data
 ADD mysql_backup.sh /usr/src/
